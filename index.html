@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>MAG PIE</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="CSS/styles.css">
+
+        <script
+            accesskey=""src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous">
+        </script>
+        <script>
+                
+            
+        $(document).ready(() => {
+            
+            var pies = [];
+            var friedPies = [];
+            var cupCakes = [];
+            var cakeBalls = [];
+            var cakes = [];
+            var icings = [];
+            var toppings = [];
+            var currentItem;
+            var currentItemQuantity = 0;
+            
+            function cakesClicked() {
+                $('#cake-label').css({"opacity": "1.0", "font-size":"50px"});
+                $('#pie-label').css({"opacity": "0.3", "font-size":"40px"});
+                $('#build-nav-button').css({"color": "#ffbac4"});
+                
+                $('#menu-left').empty();
+                $('#menu-right').empty();
+                
+                $('#menu-left').append('<h2>Cupcakes<h2>');
+                $('#menu-right').append('<h2>Cake Balls<h2>'); 
+             
+             for(var i = 0; i < cupCakes.length;i++){
+                 var cc = cupCakes[i].replace(/_/g, ' ');
+                 $('#menu-left').append('<div class = item id = '+cupCakes[i]+'_Cupcake><div class = item-image><img src="assets/po.png" alt=""/></div><div class = item-desc>'+cc+'</div></div>');
+                 
+             }
+             for(var i = 0; i < cakeBalls.length;i++){
+                 var cb = cakeBalls[i].replace(/_/g, ' ');
+                 $('#menu-right').append('<div class = item id = '+cakeBalls[i]+'_Cake_Ball><div class = item-image><img src="assets/po.png" alt=""/></div><div class = item-desc>'+cb+'</div></div>');
+                 
+             }
+             
+         
+               
+                    
+                    }
+            function piesClicked() {
+                
+                $('#pie-label').css({"opacity": "1.0", "font-size":"50px"});
+                $('#cake-label').css({"opacity": "0.3", "font-size":"40px"});
+                $('#build-nav-button').css({"color": "#ffbac4"});
+                $('#menu-left').empty();
+                $('#menu-right').empty();
+                
+                $('#menu-left').append('<h2>Whole/Sliced Pie<h2>');
+                $('#menu-right').append('<h2>Fried Pie<h2>'); 
+             
+             for(var i = 0; i < pies.length;i++){
+                 var p = pies[i].replace(/_/g, ' ');
+                 $('#menu-left').append('<div class = item id = '+pies[i]+'_Pie><div class = item-image><img src="assets/icons/icon-pie.png" alt=""/></div><div class = item-desc>'+p+'</div></div>');
+                 
+             }
+             for(var i = 0; i < friedPies.length;i++){
+                 var fP = friedPies[i].replace(/_/g, ' ');
+                 $('#menu-right').append('<div class = item id = '+friedPies[i]+'_Fried_Pie><div class = item-image><img src="assets/icons/icon-pie.png" alt=""/></div><div class = item-desc>'+fP+'</div></div>');
+                 
+             }
+             
+            
+               
+               
+                    
+                    }
+                    
+            for(var i=1; i < 13;i++){
+                $('#item-right-div').append('<div class = quantity id = '+i+'>'+i+'</div>');
+            }        
+            
+            
+            $.ajax({
+                        type: 'GET',
+                        url: 'menu.json',
+                        success: function(items) {
+                            $.each(items, function(i, item){//traverse json file 
+                                if(item.category === 'Cake'){
+                                    if(item.type === 'Cupcake'){
+                                        var cc = item.flavor.replace(/\s/g, '_');
+                                        cupCakes.push(cc);
+                                    }
+                                    if(item.type === 'Cake Ball'){
+                                        var cb = item.flavor.replace(/\s/g, '_');
+                                        cakeBalls.push(cb);
+                                    }
+                                }
+                                else{
+                                    if(item.type === 'Whole/Slice'){
+                                        var ws = item.flavor.replace(/\s/g, '_');
+                                        pies.push(ws);
+                                    }
+                                    if(item.type === 'Fried'){
+                                        var f = item.flavor.replace(/\s/g, '_');
+                                        friedPies.push(f);
+                                    }                                  
+                                }                         
+                            }); 
+                            
+               piesClicked();
+             
+                            
+                        }           
+                 });//end of ajax
+            
+             
+             $.ajax({
+                        type: 'GET',
+                        url: 'buildOptions.json',
+                        success: function(options) {
+                            $.each(options, function(i, option){//traverse json file 
+                                if(option.type === 'cake'){
+                                    cakes.push(option.flavor);
+                                }
+                                if(option.type === 'icing'){
+                                    icings.push(option.flavor);
+                                }
+                                if(option.type === 'topping'){
+                                    toppings.push(option.flavor);
+                                }
+                                                           
+                            }); 
+//                            
+//                             $('#cakeOptions').append('<p>Cakes</p>');
+//                             $('#icingOptions').append('<p>Icings</p>');
+//                             $('#toppingOptions').append('<p>Toppings</p>');
+                            
+                            for(var i = 0;i < cakes.length;i++){
+                                $('#cakeOptions').append('<div id = '+cakes[i]+' class = cakeOptions>'+cakes[i]+'</div>');
+                            }
+                            
+                            for(var i = 0;i < icings.length;i++){
+                                $('#icingOptions').append('<div id = '+icings[i]+'  class = icingOptions>'+icings[i]+'</div>');
+                            }
+                            
+                            for(var i = 0;i < toppings.length;i++){
+                                $('#toppingOptions').append('<div id = '+toppings[i]+'  class = toppingOptions>'+toppings[i]+'</div>');
+                            }
+           
+             
+           
+                            
+                        }           
+                 });//
+             
+             
+            
+            
+            
+            $('#pie-label').click(function (e) {
+                piesClicked();
+                $('.pieIcon').css('background-image', 'url(assets/icons/icon-pie-clicked.png)');
+                $('.cakeIcon').css('background-image', 'url(assets/icons/icon-cupcake.png)');
+                
+            });
+            $('#cake-label').click(function (e) {
+                cakesClicked();
+                $('.cakeIcon').css('background-image', 'url(assets/icons/icon-cupcake-clicked.png)');
+                $('.pieIcon').css('background-image', 'url(assets/icons/icon-pie.png)');
+             
+            });
+            $('#menu-button').click(function (e) {
+                $('html, body').animate({scrollTop: $("#menu").offset().top}, 1000);
+                $('.pieIcon').css('background-image', 'url(assets/icons/icon-pie-clicked.png)');
+            });
+            $('#build-button').click(function (e) {
+                $('html, body').animate({scrollTop: $("#build").offset().top}, 1000);
+            });
+            $('#build-nav-button').click(function (e) {
+                $('html, body').animate({scrollTop: $("#build").offset().top}, 1000);
+                $('#build-nav-button').css({"color": "#efe9de"});
+                $('.cakeIcon').css('background-image', 'url(assets/icons/icon-cupcake.png)');
+                $('.pieIcon').css('background-image', 'url(assets/icons/icon-pie.png)');
+                
+            });
+            $('.cakeIcon').click(function (e) {
+                cakesClicked();
+                $('.cakeIcon').css('background-image', 'url(assets/icons/icon-cupcake-clicked.png)');
+                $('.pieIcon').css('background-image', 'url(assets/icons/icon-pie.png)');
+                $('html, body').animate({scrollTop: $("#menu").offset().top}, 1000);
+            });
+            $('.pieIcon').click(function (e) {
+                piesClicked();
+                $('.pieIcon').css('background-image', 'url(assets/icons/icon-pie-clicked.png)');
+                $('.cakeIcon').css('background-image', 'url(assets/icons/icon-cupcake.png)');
+                $('html, body').animate({scrollTop: $("#menu").offset().top}, 1000);
+            });
+            
+            $('#orders-button').click(function (e) {
+                $('html, body').animate({scrollTop: $("#orders-page-div").offset().top}, 1000);
+            });
+            
+            
+            
+            $(document).on ("click", ".cakeOptions", function (e) {
+                var cakeSelected = $(e.target).text();
+                var id = $(e.target).text();
+                cakeSelected = cakeSelected.replace(/\s/g, '');
+               
+                var imageUrl = 'assets/buildCupcakeOptions/cakes/' + cakeSelected + '.jpg';
+                console.log(imageUrl);
+                $('#cake').css('background-image', 'none');
+                $('#cake').css('background-image', 'url(' + imageUrl + ')');
+                $('#'+id).css({"font-size":"30px"});
+            });
+            $(document).on ("click", ".icingOptions", function (e) {
+                var icingSelected = $(e.target).text();
+                icingSelected = icingSelected.replace(/\s/g, '');
+               
+                var imageUrl = 'assets/buildCupcakeOptions/icings/' + icingSelected + '.jpg';
+                console.log(imageUrl);
+                $('#icing').css('background-image', 'none');
+                $('#icing').css('background-image', 'url(' + imageUrl + ')');
+            });
+            $(document).on ("click", ".item", function (e) {
+                $('#item-left-div').empty();
+                $('#item-order-div').css({"visibility":"visible"});
+                $('#container').css({"-webkit-filter": "blur(5px)", "filter": "blur(5px)"});
+                var item_id = jQuery(this).attr("id");
+                item_id = item_id.replace(/_/g, ' ');
+                currentItem = item_id;
+                console.log(currentItem);
+                $('#item-left-div').append('<p>'+item_id+'</p><img id = itemImage src="assets/po.png" alt=""/>');
+
+                
+            });
+            $(document).on ("click", ".quantity", function (e) {
+                $('#'+currentItemQuantity).css({"background-color":"#00b7b4"});        
+                currentItemQuantity = jQuery(this).attr("id");
+                console.log(currentItemQuantity);
+                $('#'+currentItemQuantity).css({"background-color":"#efe9de"});
+                
+                
+            });
+            
+            $('#add-button').click(function (e) {
+                if(currentItemQuantity !== 0){
+                $('#orders').append('<div id = order-div><div id = item-div>'+currentItem+'</div><div id = quantity-div>'+currentItemQuantity+'</div></div>')
+                $('#item-order-div').css({"visibility":"collapse"});
+                $('#container').css({"-webkit-filter": "none", "filter": "none"});
+                $('#'+currentItemQuantity).css({"background-color":"#00b7b4"});
+                currentItemQuantity = 0;
+                $('#order-added-div').css({"visibility":"visible"});
+            }
+                else{
+                    alert('No Quantity Seleced');
+                }
+            });
+            
+            $('#close-button').click(function (e) {
+                $('#item-order-div').css({"visibility":"collapse"});
+                $('#container').css({"-webkit-filter": "none", "filter": "none"});
+                $('#'+currentItemQuantity).css({"background-color":"#00b7b4"});
+                currentItemQuantity = 0 ;
+
+            });
+            
+            $('#close-order-message-button').click(function (e) {
+                $('#order-added-div').css({"visibility":"collapse"});
+                
+            });
+            $('#goto-orders').click(function (e) {
+                $('#order-added-div').css({"visibility":"collapse"});
+                $('html, body').animate({scrollTop: $("#orders-page-div").offset().top}, 1000);
+            });
+            
+            $(window).scroll(function(){
+               if($(this).scrollTop() > 100){
+                    $('#nav-logo').css({"width" : "100px","margin-top" : "-50px"});
+                    $('#build-nav-button').css({"visibility":"visible"});
+                }
+               else{
+                    $('#nav-logo').css({"width" : "300px","margin-top" : "25px"});
+                    $('#build-nav-button').css({"visibility":"hidden"});
+                    $('#item-order-div').css({"visibility":"collapse"});
+                    $('#container').css({"-webkit-filter": "none", "filter": "none"});
+                    
+                   
+                    
+                }
+                
+            
+                
+            });
+            
+            
+     
+    });
+       
+        </script>
+    </head>
+    <body>
+        <nav>
+                <div id = 'icons-div'>
+                    <div class = 'pieIcon'></div>
+                    <div class = 'cakeIcon'></div>
+                </div>
+                <div id = 'build-nav-button-div'>
+                    <div id = 'build-nav-button'>
+                    BUILD
+                    </div>
+                </div>
+            
+                <div id = 'orders-div'>
+                   <div id = 'orders-button'>
+                    ORDERS
+                    </div>
+                </div>
+                <a href="index.html"><img id = 'nav-logo' src="assets/LOGO.png" alt="logo"/></a>
+            </nav>
+        
+        <div id = 'item-order-div'>
+            <div id  = 'close-div'><div id  = 'close-button'>X</div></div>
+            <div id  = 'item-left-div'></div>
+            <div id  = 'item-right-div'><p>Quantity</p></div>
+            <div id  = 'add-button'> ADD TO ORDERS</div>
+        </div>
+        
+        <div id ='order-added-div'>
+            <div id  = 'close-div'><div id  = 'close-order-message-button'>X</div></div>
+            <div id ='order-added'>ADDED!</div>
+            <div id ='goto-orders'>GO TO ORDERS</div>
+            
+        </div>
+        
+        
+        
+        
+        <div id='container'>
+            
+            <div id='top'>
+                <br><br>
+                <a href="index.html"><img id = 'logo' src="assets/LOGO.png" alt="logo"/></a>
+                <br><br><br><br><br><br><br><br><br><br><br>
+                <p id = 'menu-button'>MENU</p>
+                <p id = 'build-button'>BUILD</p>
+            </div>
+            
+          
+            <div id='menu'>
+                <div id = 'menu-labels'>
+                    <div id = 'pie-label' class='label'>Pies</div>
+                    <div id = 'cake-label' class='label'>Cakes</div>                  
+                </div>
+                <div id = 'menu-items'>
+                    <div id = 'menu-left'></div>
+                    <div id = 'menu-right'></div>      
+                </div>
+            </div>
+            <div id='build'>
+               
+               
+                <div id = 'cupcakeDisplay-div'>
+                    <div id = 'buildCupcake-div'>
+                    <div id = 'icing'></div>
+                    <div id = 'cake'></div>
+                    <div id = 'cupcake-overlay'>
+                        <img src="assets/cupcake-overlay.png" alt=""/>
+                    </div>
+                    <div id = 'topping'></div>
+                    </div>                
+                </div>
+     
+                 <div id = 'buildOptions-div'>
+                    <div id = 'labelOptions'>Build</div>
+                    <div id = 'cakeOptions'><div id = 'optionLabel'>Cake</div></div>
+                    <div id = 'icingOptions'><div id = 'optionLabel'>Icing</div></div>
+                    <div id = 'toppingOptions'><div id = 'optionLabel'>Topping</div></div>
+                    
+                </div>
+            </div>
+            
+            <div id = 'orders-page-div'>
+                <div id = 'orders'>
+                    <div id = 'order-label-div'>
+                        <div id = 'item-label'>ITEM</div>
+                         <div id = 'quantity-label'>QUANTITY</div>  
+                    </div>
+                </div> 
+                
+            </div> 
+            
+            <div id = 'footer'>
+                
+                
+            </div>   
+
+      
+        </div>
+    </body>
+</html>

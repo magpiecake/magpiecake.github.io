@@ -1,0 +1,641 @@
+body {
+    margin: 0;
+    font-family: monospace;
+    background-color: #bd5a6a; 
+    
+
+    
+}
+
+#container {
+    
+}
+
+
+nav {
+    width: 100%;
+    height: 70px;
+    position: fixed;
+    opacity:1;
+    background-color: #bd5a6a;
+    transition: .1s;
+    text-align: center;
+    z-index: 1;
+    top: 0px;
+
+}
+
+#icons-div {
+    float:left;
+    height: 100%;
+    width: 18%;
+    
+}
+
+.cakeIcon {
+    width: 70px;
+    height: 100%;
+    float: left;
+    cursor:pointer;
+    background-image: url('../assets/icons/icon-cupcake.png');
+    background-size:cover;  
+    background-position: center center;
+}
+.pieIcon {
+    width: 70px;
+    height: 100%;
+    float: left;
+    cursor:pointer;
+    background-image: url('../assets/icons/icon-pie.png');
+    background-size:cover;  
+    background-position: center center;
+}
+
+/*.cakeIcon:hover{background-image: url('../assets/icons/icon-cupcake-clicked.png');}
+.pieIcon:hover{background-image: url('../assets/icons/icon-pie-clicked.png');}*/
+
+#build-nav-button-div {
+    width:32%;
+    height:100%;
+    float:left;
+    font-size: 25px;
+    
+    
+}
+
+#build-nav-button {
+    width: 80px;
+    height: 40px;
+    color: #ffbac4;
+    border-radius: 5px;
+    padding: 4px;
+    line-height: 40px;
+    margin-top: 10px;
+    cursor: pointer;
+    visibility: hidden;
+    display: none;
+}
+
+#build-nav-button:hover {
+    color: #efe9de;
+}
+    
+
+
+#orders-div {
+    float:right;
+    height: 100%;
+    width: 50%;
+    font-size: 25px;
+
+    
+}
+
+#orders-button {
+    width: 80px;
+    height: 40px;
+    color: #ffbac4;
+    border-radius: 5px;
+    padding: 4px;
+    line-height: 40px;
+    margin-top: 10px;
+    margin-right: 30px;
+    cursor: pointer;
+    float:right;
+
+    
+}
+
+#orders-button:hover {
+    color: #efe9de;
+}
+
+
+
+#nav-logo {
+    width: 300px;;
+    -webkit-animation: rotation 6s infinite linear;
+    cursor:pointer;
+    margin-bottom: 10px;
+    margin-top: 25px;
+    transition: .5s;
+    opacity:1;
+}
+
+#logo {
+    width: 30%;
+    margin-top: 10px;
+    -webkit-animation: rotation 6s infinite linear;
+    cursor:pointer;
+    margin-bottom: 10px;
+    transition: 1s;
+    display: none;
+   
+
+}
+
+.bg-images{
+    width:130px;
+    height: 400px;
+    opacity: 0;
+    transition: .5s;
+    z-index: 0;
+    
+      
+}
+
+@-webkit-keyframes rotation {
+		from {
+				-webkit-transform: rotate(0deg);
+		}
+		to {
+				-webkit-transform: rotate(359deg);
+		}
+}
+
+#menu-button{
+    cursor: pointer;
+    width:100px;
+    margin-top:0;
+    margin-right:auto;
+    margin-bottom:5px;
+    margin-left:auto;
+}
+#build-button{
+    cursor: pointer;
+    width:100px;
+    margin-top:0;
+    margin-right:auto;
+    margin-bottom:0;
+    margin-left:auto;
+    display: none;
+
+}
+#menu-button:hover{
+    color:#efe9de;
+    
+}
+#build-button:hover{
+    color:#efe9de;
+}
+
+
+
+#top {
+    background-color: #bd5a6a; 
+     height: 100vh;
+     width: 100%;
+     color:#ffbac4;
+     font-size: 30px;
+     text-align: center;
+     transition: 1s;
+/*     background-image: url('../assets/BG.jpg');*/
+     background-size:     cover;                      
+     background-position: center center;
+
+
+}
+
+
+#left{
+    height: 100vh;
+    width: 10%;
+    background-color: red;
+    background-size:    cover;                      
+    background-position: center center;
+    position: fixed;
+    left:0px;
+}
+#right{
+    height: 100vh;
+    width: 10%;
+    background-color: purple;
+    background-size:     cover;                      
+    background-position: center center;
+    position: fixed;
+    right:0px;
+     
+
+}
+
+
+#menu {background-color: #efe9de; 
+     height: 660px;;
+     color:#bd5a6a;
+     font-size: 20px;
+     text-align: center;
+    
+}
+
+#menu-labels {
+    width: 100%;
+    height: 50px;;
+    float:left;
+     margin-top: 70px;
+    
+}
+
+.label {
+    font-size: 10px;
+    height: 100%;
+    width: 50%;
+    float: left;
+    text-align: center;
+    cursor: pointer;
+    color:#ffbac4;
+}
+
+#cake-label {
+    opacity: 0.3;
+    font-size: 40px;
+}
+
+#pie-label {
+    font-size: 80px;
+}
+
+#menu-items {
+    width: 100%;
+    height: 90%;
+    font-size: 16px;
+ 
+    
+}
+
+#menu-items p,h1,h2 {
+    color:#00b7b4;
+    
+}
+#menu-items p:hover {
+    color:#bd5a6a;
+    
+}
+
+
+#menu-left {
+    height:500px;
+    width:49%;
+    float:left;
+    border: solid 3px #bd5a6a;
+    margin: .5px;
+    border-radius:5px;
+   
+
+}
+#menu-right {
+    height:500px;
+    width:49%;
+    float:left;
+    border: solid 3px #bd5a6a;
+    margin: .5px;
+    border-radius:5px;
+
+}
+
+
+
+.item {
+    width:33%;
+    height: 140px;
+    float: left;
+    border-radius: 5px;
+    margin: .5px;
+}
+
+.item:hover {
+    background-color: #6dc5db;
+    }
+
+.item-image {
+    width:100%;
+    height: 100px;
+    text-align: center;
+}
+
+.item-image img {
+    width: 100px;
+}
+
+.item-desc {
+    width:100%;
+    height: 30px;
+    font-size: 12px;
+    text-align: center;
+}
+
+
+#item-order-div {
+    position:fixed;
+    left: 50%;
+    top: 150px;
+    transform: translate(-50%, 0);
+    width: 500px;
+    height: 400px;
+    background-color: #bd5a6a;
+    z-index: 1;
+    border-radius: 10px;
+    visibility: collapse;
+}
+
+#close-div{
+    width:100%;
+    height: 30px;
+    float: left;
+}
+#close-button{
+    width:30px;
+    height: 100%;
+    float: right;
+    font-size: 30px;
+    font-family: sans-serif;
+    cursor: pointer;
+}
+#item-left-div,#item-right-div{
+    width:50%;
+    height:320px;
+    float:left;
+    text-align: center;
+    font-size: 20px;
+}
+#item-left-div{
+    font-size: 20px;
+}
+
+#item-right-div p{
+    margin-bottom: 30px;
+}
+
+.quantity {
+    width: 25%;
+    height: 30px;
+    background-color: #00b7b4;
+    cursor: pointer;
+    float: left;
+    margin: 5px;
+    margin-left: 15px;
+    border-radius:5px;
+}
+
+.quantity:hover {
+       background-color: #efe9de;
+
+}
+
+#itemImage {
+    width:200px;
+}
+
+#add-button {
+    width:100%;
+    height:50px;
+    background-color: #00b7b4;
+    float: left;
+    border-bottom-right-radius:10px;
+    border-bottom-left-radius:10px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 40px;
+}
+
+#add-button:hover {
+    background-color: #efe9de;
+}
+
+
+
+
+#build {
+    background-color: #6dc5db;
+     height: 630px;
+     color:#efe9de;
+     padding-top: 80px;
+     display: none;
+         
+     
+   
+    
+}
+
+
+#buildOptions-div {
+    float:left;
+    margin-left: 20px;
+    width:45%;
+    height:530px;
+    
+   
+    
+    
+}
+
+
+
+
+#labelOptions{
+    width:100%;
+    height:5%;
+}
+#cakeOptions{
+    width:100%;
+    height:25%;
+}
+#icingOptions{
+    width:100%;
+    height:35%;
+}
+#toppingOptions{
+    width:100%;
+    height:30%;
+}
+
+#optionLabel {
+    font-size: 20px;
+
+}
+
+.cakeOptions,.icingOptions,.toppingOptions {
+    cursor: pointer;
+    font-size: 12px;
+    margin: 3px;
+    float: left;
+    border-radius: 5px;
+    padding: 4px;
+    color:black;
+  
+
+}
+
+.cakeOptions:hover,.icingOptions:hover,.toppingOptions:hover {
+    background-color: #00b7b4;
+}
+
+
+
+
+#cupcakeDisplay-div {
+    float:left;
+    width:52%;
+    height:530px;
+
+
+ 
+    
+}
+
+#buildCupcake-div {
+   width: 400px;
+  height: 400px;
+  position: relative;
+  float: left;
+  margin-top: 40px;
+ 
+}
+
+#cupcake-overlay {
+    width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  
+    
+}
+
+#cupcake-overlay img {
+    width:100%;
+    height:100%;
+    z-index: -1;
+}
+
+#topping {
+    width: 200px;
+  height: 120px;;
+  position: absolute;
+  top: 150px;
+  left: 108px;
+  transform: translateY(-50%);
+/*    background-image: url('../assets/topping.png');*/
+      background-size:cover;  
+  background-position: center center;
+    
+
+    
+}
+
+#icing {
+  background-image: url('../assets/fros ting.jpg');
+  background-size:cover;  
+  background-position: center center;
+  height: 52.5%;
+}
+#cake {
+    background-image: url('../assets/cake.jpg');
+    background-size: cover;  
+    background-position: center center;
+    height: 47.5%;
+     
+}
+
+
+#footer {
+    background-color: #bd5a6a;
+    width:100%;
+    height:100px;
+    }
+
+#orders-page-div {
+    background-color: #ffbac4;
+    width: 100%;
+    height: 100vh;
+    padding-top:140px;
+        
+    }
+    
+#orders {
+    width:80%;
+    height:500px;
+    margin-left: auto;
+    margin-right: auto;
+        
+        
+    }
+    
+#order-label-div {
+    width:100%;
+    height: 40px;
+    font-weight: bold;
+    font-size: 20px;
+    color: #00b7b4;
+    
+        
+    }
+#item-label{
+    height:100%;
+    width:85%;
+    float:left;
+}
+#quantity-label{
+    height:100%;
+    width:15%;
+    float:left;
+}
+
+#order-div{
+    width:100%;
+    height: 40px;
+    font-weight: bold;
+    font-size: 20px;
+    color: #bd5a6a;
+}
+#item-div{
+     height:100%;
+    width:85%;
+    float:left;
+}
+#quantity-div{
+    height:100%;
+    width:15%;
+    float:left;
+}
+
+#order-added-div{
+    position:fixed;
+    left: 50%;
+    top: 150px;
+    transform: translate(-50%, 0);
+    width: 300px;
+    height: 200px;
+    background-color: #bd5a6a;
+    z-index: 1;
+    border-radius: 10px;
+    visibility: collapse;
+    text-align: center;
+}
+#order-added{
+    width:100%;
+    height:150px;
+    font-size: 40px;
+}
+#goto-orders{
+    width:100%;
+    height:50px;
+    font-size: 30px;
+    font-family: sans-serif;
+    background-color: #00b7b4;
+    border-bottom-right-radius:10px;
+    border-bottom-left-radius:10px;
+    cursor: pointer;
+}
+
+#goto-orders:hover{
+    background-color: #efe9de;
+}
+
+#close-order-message-button{
+    width:30px;
+    height: 100%;
+    float: right;
+    font-size: 30px;
+    font-family: sans-serif;
+    cursor: pointer;
+}
