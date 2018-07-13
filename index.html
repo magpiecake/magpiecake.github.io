@@ -7,6 +7,8 @@ and open the template in the editor.
 <html>
     <head>
         <title>MAG PIE</title>
+        <link rel="icon" href="assets/LOGO.png">
+        <meta name="viewport" content="width=device-width, intitial-scale=1.0">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="CSS/styles.css">
@@ -30,8 +32,13 @@ and open the template in the editor.
             var toppings = [];
             var currentItem;
             var currentItemQuantity = 0;
+            var orders = 0;
+            var rand;
             
             function cakesClicked() {
+                 
+                
+                
                 $('#cake-label').css({"opacity": "1.0", "font-size":"50px"});
                 $('#pie-label').css({"opacity": "0.3", "font-size":"40px"});
                 $('#build-nav-button').css({"color": "#ffbac4"});
@@ -43,13 +50,15 @@ and open the template in the editor.
                 $('#menu-right').append('<h2>Cake Balls<h2>'); 
              
              for(var i = 0; i < cupCakes.length;i++){
+                 rand = Math.floor((Math.random()*4) + 1); 
                  var cc = cupCakes[i].replace(/_/g, ' ');
-                 $('#menu-left').append('<div class = item id = '+cupCakes[i]+'_Cupcake><div class = item-image><img src="assets/po.png" alt=""/></div><div class = item-desc>'+cc+'</div></div>');
+                 $('#menu-left').append('<div class = item id = '+cupCakes[i]+'_Cupcake><div class = item-image><img src="assets/cake-images/cupcake/cupcake'+rand+'.png" alt=""/></div><div class = item-desc>'+cc+'</div></div>');
                  
              }
              for(var i = 0; i < cakeBalls.length;i++){
+                 rand = Math.floor((Math.random()*4) + 1);
                  var cb = cakeBalls[i].replace(/_/g, ' ');
-                 $('#menu-right').append('<div class = item id = '+cakeBalls[i]+'_Cake_Ball><div class = item-image><img src="assets/po.png" alt=""/></div><div class = item-desc>'+cb+'</div></div>');
+                 $('#menu-right').append('<div class = item id = '+cakeBalls[i]+'_Cake_Ball><div class = item-image><img src="assets/cake-images/cakeBall/cakeBall'+rand+'.png" alt=""/></div><div class = item-desc>'+cb+'</div></div>');
                  
              }
              
@@ -58,6 +67,7 @@ and open the template in the editor.
                     
                     }
             function piesClicked() {
+                console.log(rand);
                 
                 $('#pie-label').css({"opacity": "1.0", "font-size":"50px"});
                 $('#cake-label').css({"opacity": "0.3", "font-size":"40px"});
@@ -65,17 +75,19 @@ and open the template in the editor.
                 $('#menu-left').empty();
                 $('#menu-right').empty();
                 
-                $('#menu-left').append('<h2>Whole/Sliced Pie<h2>');
+                $('#menu-left').append('<h2>Sliced Pie<h2>');
                 $('#menu-right').append('<h2>Fried Pie<h2>'); 
              
              for(var i = 0; i < pies.length;i++){
+                 rand = Math.floor((Math.random()*4) + 1);
                  var p = pies[i].replace(/_/g, ' ');
-                 $('#menu-left').append('<div class = item id = '+pies[i]+'_Pie><div class = item-image><img src="assets/icons/icon-pie.png" alt=""/></div><div class = item-desc>'+p+'</div></div>');
+                 $('#menu-left').append('<div class = item id = '+pies[i]+'_Pie><div class = item-image><img src="assets/pie_images/pie/pie'+rand+'.png" alt=""/></div><div class = item-desc>'+p+'</div></div>');
                  
              }
              for(var i = 0; i < friedPies.length;i++){
+                 rand = Math.floor((Math.random()*4) + 1);
                  var fP = friedPies[i].replace(/_/g, ' ');
-                 $('#menu-right').append('<div class = item id = '+friedPies[i]+'_Fried_Pie><div class = item-image><img src="assets/icons/icon-pie.png" alt=""/></div><div class = item-desc>'+fP+'</div></div>');
+                 $('#menu-right').append('<div class = item id = '+friedPies[i]+'_Fried_Pie><div class = item-image><img src="assets/pie_images/friedPie/friedPie'+rand+'.png" alt=""/></div><div class = item-desc>'+fP+'</div></div>');
                  
              }
              
@@ -207,7 +219,11 @@ and open the template in the editor.
             });
             
             $('#orders-button').click(function (e) {
-                $('html, body').animate({scrollTop: $("#orders-page-div").offset().top}, 1000);
+                if(orders > 0){
+                $('html, body').animate({scrollTop: $("#orders-page-div").offset().top}, 1000);}
+                else{
+                    alert('No orders added');
+                }
             });
             
             
@@ -255,12 +271,22 @@ and open the template in the editor.
             
             $('#add-button').click(function (e) {
                 if(currentItemQuantity !== 0){
-                $('#orders').append('<div id = order-div><div id = item-div>'+currentItem+'</div><div id = quantity-div>'+currentItemQuantity+'</div></div>')
+                orders++;    
+                if(orders === 1){
+                    $('#no-orders').css({"visibility":"collapse"});
+                }   
+                    
+                    
+                $('#orders').append('<div id = order-div><div id = item-div>'+currentItem+'</div><div id = quantity-div>'+currentItemQuantity+'</div></div>');
                 $('#item-order-div').css({"visibility":"collapse"});
-                $('#container').css({"-webkit-filter": "none", "filter": "none"});
+            
                 $('#'+currentItemQuantity).css({"background-color":"#00b7b4"});
                 currentItemQuantity = 0;
                 $('#order-added-div').css({"visibility":"visible"});
+                
+                
+                
+                
             }
                 else{
                     alert('No Quantity Seleced');
@@ -277,11 +303,13 @@ and open the template in the editor.
             
             $('#close-order-message-button').click(function (e) {
                 $('#order-added-div').css({"visibility":"collapse"});
+                $('#container').css({"-webkit-filter": "none", "filter": "none"});
                 
             });
             $('#goto-orders').click(function (e) {
                 $('#order-added-div').css({"visibility":"collapse"});
                 $('html, body').animate({scrollTop: $("#orders-page-div").offset().top}, 1000);
+                $('#container').css({"-webkit-filter": "none", "filter": "none"});
             });
             
             $(window).scroll(function(){
@@ -396,11 +424,33 @@ and open the template in the editor.
                         <div id = 'item-label'>ITEM</div>
                          <div id = 'quantity-label'>QUANTITY</div>  
                     </div>
+                     <div id = 'no-orders'>
+                        NO ORDERS HAVE BEEN ADDED YET
+                    </div>
                 </div> 
                 
             </div> 
             
             <div id = 'footer'>
+                <div id = 'footer-content'>
+                    <div id = 'links'>                        
+                        <div>HOME</div>
+                        <div>PIES</div>
+                        <div>CAKES</div>
+                        <div>ORDERS</div>
+                       
+                            
+                    </div>
+                    MAG PIE + CAKE 2018
+                    <div id = 'socials'>
+                        <a><img src="assets/socials/yelp.png" alt=""/></a>
+                        <a><img src="assets/socials/ig.png" alt=""/></a>
+                        <a><img src="assets/socials/twitter.png" alt=""/></a>
+                        <a><img src="assets/socials/email.png" alt=""/></a>
+                        
+                    </div>
+                    
+                </div>
                 
                 
             </div>   
