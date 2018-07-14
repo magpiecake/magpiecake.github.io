@@ -324,6 +324,7 @@ nav {
     height: 30px;
     font-size: 12px;
     text-align: center;
+    font-weight: bold;
 }
 
 
@@ -378,7 +379,7 @@ nav {
     margin: 5px;
     margin-left: 15px;
     border-radius:5px;
-    color: #efe9de
+    color: #bd5a6a;
 }
 
 .quantity:hover {
