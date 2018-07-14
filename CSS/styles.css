@@ -376,10 +376,12 @@ nav {
     margin: 5px;
     margin-left: 15px;
     border-radius:5px;
+    color: #efe9de
 }
 
 .quantity:hover {
        background-color: #efe9de;
+       color:#ffbac4;
 
 }
 
@@ -402,6 +404,7 @@ nav {
 
 #add-button:hover {
     background-color: #efe9de;
+    color:#ffbac4;
 }
 
 
