@@ -263,8 +263,9 @@ and open the template in the editor.
             $(document).on ("click", ".quantity", function (e) {
                 $('#'+currentItemQuantity).css({"background-color":"#00b7b4"});        
                 currentItemQuantity = jQuery(this).attr("id");
-                console.log(currentItemQuantity);
+                
                 $('#'+currentItemQuantity).css({"background-color":"#efe9de"});
+                $('#'+currentItemQuantity).css({"color":"#ffbac4"});
                 
                 
             });
