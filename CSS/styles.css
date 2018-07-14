@@ -337,6 +337,7 @@ nav {
     z-index: 1;
     border-radius: 10px;
     visibility: collapse;
+    color: #efe9de;
 }
 
 #close-div{
