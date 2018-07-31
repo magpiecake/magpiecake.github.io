@@ -273,7 +273,7 @@ nav {
 
 
 #menu-left {
-    height:500px;
+    height:520px;
     width:49%;
     float:left;
     border: solid 3px #bd5a6a;
@@ -283,7 +283,7 @@ nav {
 
 }
 #menu-right {
-    height:500px;
+    height:520px;
     width:49%;
     float:left;
     border: solid 3px #bd5a6a;
@@ -296,12 +296,12 @@ nav {
 
 .item {
     width:30%;
-    height: 120px;
+    height: 140px;
     float: left;
     border-radius: 5px;
     margin: .5px;
     border: 4px solid transparent;
-    font-weight:bold;
+    
 }
 
 .item:hover {
@@ -324,7 +324,6 @@ nav {
     height: 30px;
     font-size: 12px;
     text-align: center;
-    font-weight: bold;
 }
 
 
@@ -339,7 +338,7 @@ nav {
     z-index: 1;
     border-radius: 10px;
     visibility: collapse;
-    color: #ffbac4;
+    color:#ffbac4;
 }
 
 #close-div{
@@ -379,12 +378,10 @@ nav {
     margin: 5px;
     margin-left: 15px;
     border-radius:5px;
-    color: #ffbac4;
 }
 
 .quantity:hover {
        background-color: #efe9de;
-      
 
 }
 
@@ -406,10 +403,8 @@ nav {
 }
 
 #add-button:hover {
-    background-color: #efe9de;
-    color:#ffbac4;
+    background-color: #ffbac4;;
 }
-
 
 
 
@@ -586,6 +581,10 @@ nav {
     float:left;
 }
 
+.quantity{
+    line-height: 30px;
+}
+
 #order-div{
     width:100%;
     height: 40px;
@@ -617,23 +616,24 @@ nav {
     visibility: collapse;
     text-align: center;
     color:#ffbac4;
+    
 }
 #order-added{
     width:100%;
     height:150px;
-    font-size: 40px;
-    line-height: 150px;
+    font-size: 80px;
+    line-height: 120px;
 }
 #goto-orders{
     width:100%;
     height:50px;
-    line-height: 50px;
     font-size: 30px;
     font-family: sans-serif;
     background-color: #00b7b4;
     border-bottom-right-radius:10px;
     border-bottom-left-radius:10px;
     cursor: pointer;
+    line-height: 50px;
 }
 
 #goto-orders:hover{
@@ -851,6 +851,14 @@ nav {
     #menu-labels {
      margin-top: 90px;
     
+}
+
+.quantity {
+    line-height: 20px;
+}
+
+#add-button {
+    line-height: 40px;
 }
  
     
