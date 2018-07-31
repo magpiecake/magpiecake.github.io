@@ -256,17 +256,15 @@ and open the template in the editor.
                 item_id = item_id.replace(/_/g, ' ');
                 currentItem = item_id;
                 console.log(currentItem);
-                $('#item-left-div').append('<p>'+item_id+'</p><img id = itemImage src="assets/cake-images/cupcake/cupcake2.png" alt=""/>');
-
-                
+                $('#item-left-div').append('<p>'+item_id+'</p><img id = itemImage src="assets/cake-images/cakeBall/cakeBall1.png" alt=""/>');
+                $('#order-added-div').css({"visibility":"collapse"});                
             });
             $(document).on ("click", ".quantity", function (e) {
                 $('#'+currentItemQuantity).css({"background-color":"#00b7b4"});        
                 currentItemQuantity = jQuery(this).attr("id");
-                
+                console.log(currentItemQuantity);
                 $('#'+currentItemQuantity).css({"background-color":"#efe9de"});
-              
-              
+                
                 
             });
             
@@ -322,6 +320,7 @@ and open the template in the editor.
                     $('#nav-logo').css({"width" : "300px","margin-top" : "25px"});
                     $('#build-nav-button').css({"visibility":"hidden"});
                     $('#item-order-div').css({"visibility":"collapse"});
+                    $('#order-added-div').css({"visibility":"collapse"});
                     $('#container').css({"-webkit-filter": "none", "filter": "none"});
                     
                    
